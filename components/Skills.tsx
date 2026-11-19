@@ -5,7 +5,7 @@ import { Code2, Server, Database, Wrench, Terminal } from "lucide-react";
 
 import {
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiJavascript,
   SiReact,
   SiNextdotjs,
@@ -17,19 +17,21 @@ import {
   SiLaravel,
   SiMongodb,
   SiMysql,
-  SiMicrosoftsqlserver,
   SiCplusplus,
-  SiJava,
-  SiCsharp,
   SiGit,
   SiGithub,
-  SiVisualstudiocode,
   SiVercel,
-  SiMicrosoftoffice,
-  SiMicrosoftpowerpoint,
 } from "react-icons/si";
 
-import { FaCode, FaNetworkWired, FaDatabase, FaTools } from "react-icons/fa";
+import {
+  FaCode,
+  FaNetworkWired,
+  FaDatabase,
+  FaJava,
+  FaHashtag,
+  FaMicrosoft,
+  FaCss3Alt,
+} from "react-icons/fa";
 
 import type { IconType } from "react-icons";
 
@@ -40,7 +42,7 @@ const categoryIcons = [Code2, Server, Database, Terminal, Wrench];
 
 const skillIcons: Record<string, { icon: IconType; color: string }> = {
   HTML: { icon: SiHtml5, color: "#E34F26" },
-  CSS: { icon: SiCss3, color: "#1572B6" },
+  CSS: { icon: FaCss3Alt, color: "#1572B6" },
   JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
   "React.js": { icon: SiReact, color: "#61DAFB" },
   "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
@@ -55,30 +57,23 @@ const skillIcons: Record<string, { icon: IconType; color: string }> = {
 
   "MongoDB Atlas": { icon: SiMongodb, color: "#47A248" },
   MySQL: { icon: SiMysql, color: "#4479A1" },
-  "SQL Server": {
-    icon: SiMicrosoftsqlserver,
-    color: "#CC2927",
-  },
+  "SQL Server": { icon: FaDatabase, color: "#CC2927" },
 
   "C++": { icon: SiCplusplus, color: "#00599C" },
-  Java: { icon: SiJava, color: "#F89820" },
-  "C#": { icon: SiCsharp, color: "#9B4F96" },
+  Java: { icon: FaJava, color: "#F89820" },
+  "C#": { icon: FaHashtag, color: "#9B4F96" },
 
   Git: { icon: SiGit, color: "#F05032" },
   GitHub: { icon: SiGithub, color: "#FFFFFF" },
-  "VS Code": { icon: SiVisualstudiocode, color: "#007ACC" },
+  "VS Code": { icon: FaCode, color: "#007ACC" },
   Vercel: { icon: SiVercel, color: "#FFFFFF" },
-  "MS Office": { icon: SiMicrosoftoffice, color: "#D83B01" },
-  PowerPoint: {
-    icon: SiMicrosoftpowerpoint,
-    color: "#D24726",
-  },
+  "MS Office": { icon: FaMicrosoft, color: "#D83B01" },
+  PowerPoint: { icon: FaMicrosoft, color: "#D24726" },
 };
 
 export default function Skills() {
   return (
     <section id="skills" className="section-pad relative overflow-hidden">
-      {/* BACKGROUND GLOW */}
       <div className="absolute top-20 right-0 w-80 h-80 bg-violet-600/10 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="container relative z-10">
