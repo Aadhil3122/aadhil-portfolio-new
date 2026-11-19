@@ -1,19 +1,54 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BriefcaseBusiness, CalendarDays, MapPin, Code2 } from "lucide-react";
+import { BriefcaseBusiness, CalendarDays, Code2 } from "lucide-react";
+
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiMongodb,
+  SiLaravel,
+  SiMysql,
+  SiExpress,
+  SiHtml5,
+  SiCss,
+} from "react-icons/si";
+
+import { FaCode } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 import Reveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
 import { experiences } from "@/data/experience";
+
+const technologyIcons: Record<string, { icon: IconType; color: string }> = {
+  "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
+  Next: { icon: SiNextdotjs, color: "#FFFFFF" },
+  React: { icon: SiReact, color: "#61DAFB" },
+  "React.js": { icon: SiReact, color: "#61DAFB" },
+  TypeScript: { icon: SiTypescript, color: "#3178C6" },
+  JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
+  "Node.js": { icon: SiNodedotjs, color: "#68A063" },
+  Node: { icon: SiNodedotjs, color: "#68A063" },
+  MongoDB: { icon: SiMongodb, color: "#47A248" },
+  "MongoDB Atlas": { icon: SiMongodb, color: "#47A248" },
+  Laravel: { icon: SiLaravel, color: "#FF2D20" },
+  MySQL: { icon: SiMysql, color: "#4479A1" },
+  "Express.js": { icon: SiExpress, color: "#FFFFFF" },
+  HTML: { icon: SiHtml5, color: "#E34F26" },
+  CSS: { icon: SiCss, color: "#1572B6" },
+};
 
 export default function Experience() {
   return (
     <section id="experience" className="section-pad relative">
       <div className="container">
-        {/* PREMIUM EXPERIENCE SECTION HEADING */}
+        {/* SECTION HEADING */}
         <Reveal className="mb-14 max-w-3xl relative">
-          {/* EYEBROW */}
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-px w-10 bg-gradient-to-r from-violet-500 to-sky-400" />
 
@@ -22,12 +57,10 @@ export default function Experience() {
             </span>
           </div>
 
-          {/* MAIN HEADING */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
             Training & <span className="gradient-text">Experience.</span>
           </h2>
 
-          {/* DESCRIPTION */}
           <div className="flex gap-5 mt-7 max-w-2xl">
             <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-violet-500 to-sky-400" />
 
@@ -38,12 +71,11 @@ export default function Experience() {
             </p>
           </div>
 
-          {/* DECORATIVE LINE */}
           <div className="mt-8 h-1 w-24 rounded-full bg-gradient-to-r from-violet-500 to-sky-400" />
         </Reveal>
 
+        {/* EXPERIENCE TIMELINE */}
         <div className="relative mt-16 max-w-4xl mx-auto">
-          {/* TIMELINE LINE */}
           <div className="absolute left-[19px] md:left-[27px] top-3 bottom-5 w-px bg-gradient-to-b from-violet-500 via-sky-500 to-transparent" />
 
           <div className="flex flex-col gap-10">
@@ -61,7 +93,7 @@ export default function Experience() {
                   transition={{ duration: 0.25 }}
                   className="glass rounded-3xl p-6 md:p-8 hover:border-violet-400/40 transition-colors"
                 >
-                  {/* TOP */}
+                  {/* DATE */}
                   <div className="flex flex-wrap items-center justify-between gap-4">
                     <span className="inline-flex items-center gap-2 rounded-full bg-violet-500/10 border border-violet-400/20 px-4 py-2 text-xs font-semibold text-violet-300">
                       <CalendarDays size={14} />
@@ -105,15 +137,26 @@ export default function Experience() {
                       Technologies & Experience
                     </h4>
 
-                    <div className="flex flex-wrap gap-2">
-                      {experience.technologies.map((technology) => (
-                        <span
-                          key={technology}
-                          className="rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-xs text-gray-300"
-                        >
-                          {technology}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-3">
+                      {experience.technologies.map((technology) => {
+                        const tech = technologyIcons[technology];
+                        const TechIcon = tech?.icon || FaCode;
+                        const color = tech?.color || "#A78BFA";
+
+                        return (
+                          <motion.div
+                            key={technology}
+                            whileHover={{ y: -4, scale: 1.04 }}
+                            transition={{ duration: 0.2 }}
+                            title={technology}
+                            className="inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.045] px-4 py-3 text-sm text-gray-300 hover:border-violet-400/40 hover:bg-white/[0.08] transition-all duration-300"
+                          >
+                            <TechIcon size={19} color={color} />
+
+                            <span className="font-medium">{technology}</span>
+                          </motion.div>
+                        );
+                      })}
                     </div>
                   </div>
                 </motion.div>
