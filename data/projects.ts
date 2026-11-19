@@ -14,6 +14,7 @@ export const projects = [
     ],
     image: "/projects/madarasa.png",
     github: "",
+    liveDemo: "https://training-project-beta.vercel.app/",
     featured: true,
   },
 
@@ -30,6 +31,7 @@ export const projects = [
     ],
     image: "/projects/school.png",
     github: "",
+    liveDemo: "https://school-website-front-end.vercel.app/",
     featured: true,
   },
 

@@ -4,11 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { ExternalLink, ArrowUpRight, Code2, Layers3 } from "lucide-react";
-
 import { FaGithub } from "react-icons/fa";
 
 import Reveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
@@ -32,7 +30,6 @@ export default function Projects() {
       <div className="container">
         {/* PREMIUM PROJECTS SECTION HEADING */}
         <Reveal className="mb-14 max-w-3xl relative">
-          {/* EYEBROW */}
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-px w-10 bg-gradient-to-r from-violet-500 to-sky-400" />
 
@@ -41,12 +38,10 @@ export default function Projects() {
             </span>
           </div>
 
-          {/* MAIN HEADING */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
             Featured <span className="gradient-text">Projects.</span>
           </h2>
 
-          {/* DESCRIPTION */}
           <div className="flex gap-5 mt-7 max-w-2xl">
             <div className="w-1 shrink-0 rounded-full bg-gradient-to-b from-violet-500 to-sky-400" />
 
@@ -57,7 +52,6 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* DECORATIVE LINE */}
           <div className="mt-8 h-1 w-24 rounded-full bg-gradient-to-r from-violet-500 to-sky-400" />
         </Reveal>
 
@@ -142,8 +136,8 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {/* LINKS */}
-                  <div className="flex items-center gap-5 mt-7 pt-5 border-t border-white/10">
+                  {/* PROJECT LINKS */}
+                  <div className="flex flex-wrap items-center gap-3 mt-7 pt-5 border-t border-white/10">
                     {project.github && (
                       <a
                         href={project.github}
@@ -153,6 +147,18 @@ export default function Projects() {
                       >
                         <FaGithub size={17} />
                         GitHub
+                      </a>
+                    )}
+
+                    {"liveDemo" in project && project.liveDemo && (
+                      <a
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-violet-600/15 border border-violet-400/30 px-4 py-2 text-sm font-semibold text-violet-300 hover:bg-violet-600 hover:text-white transition-all duration-300"
+                      >
+                        Live Demo
+                        <ExternalLink size={16} />
                       </a>
                     )}
 

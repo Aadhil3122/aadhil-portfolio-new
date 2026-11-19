@@ -29,7 +29,7 @@ export const certificates = [
     description:
       "Certificate related to JavaScript and HTML.",
     period: "2023",
-    file: "/certificates/developer-stack-academy.pdf",
+    file: "/certificates/developer-stack.pdf",
     type: "Course Certificate",
   },
 ];
