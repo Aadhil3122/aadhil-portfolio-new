@@ -62,14 +62,18 @@ export default function About() {
             <p className="text-gray-400 leading-8 mt-7">{profile.summary}</p>
 
             <p className="text-gray-400 leading-8 mt-5">
-              My learning journey includes modern frontend frameworks, backend
-              technologies and database systems. I enjoy learning new
-              technologies and developing practical software solutions.
+              My learning journey focuses on full-stack web development,
+              including modern frontend frameworks, backend technologies and
+              database managment systems. I enjoy exploring new technologies,
+              solving problemsm and transforming ideas into practical digital
+              solutions.
             </p>
 
             <p className="text-gray-400 leading-8 mt-5">
-              I am also interested in Artificial Intelligence, online business
-              and digital innovation.
+              Beyond Software development, I have a keen interest in Artificial
+              Intelligence, online business and digital innovation, i'm always
+              eager to learn, improve my skills, and take on new challenges in
+              the ever-evolving world of technology.
             </p>
 
             <a
