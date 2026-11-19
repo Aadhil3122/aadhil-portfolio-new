@@ -2,23 +2,56 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-import { ExternalLink, ArrowUpRight, Code2, Layers3 } from "lucide-react";
+import {
+  ExternalLink,
+  ArrowUpRight,
+  Code2,
+  Layers3,
+  Globe,
+} from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiMongodb,
+  SiHtml5,
+  SiCss,
+  SiJavascript,
+  SiCplusplus,
+} from "react-icons/si";
+
+import type { IconType } from "react-icons";
 
 import Reveal from "./Reveal";
 import { projects } from "@/data/projects";
 
+const filters = [
+  "All",
+  "Web Application",
+  "Full Stack Application",
+  "Web Development",
+  "Programming Project",
+];
+
+const techIcons: Record<string, { icon: IconType; color: string }> = {
+  "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
+  React: { icon: SiReact, color: "#61DAFB" },
+  TypeScript: { icon: SiTypescript, color: "#3178C6" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
+  "Node.js": { icon: SiNodedotjs, color: "#68A063" },
+  MongoDB: { icon: SiMongodb, color: "#47A248" },
+  HTML: { icon: SiHtml5, color: "#E34F26" },
+  CSS: { icon: SiCss, color: "#1572B6" },
+  JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+  "C++": { icon: SiCplusplus, color: "#00599C" },
+};
+
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState("All");
-
-  const filters = [
-    "All",
-    "Web Application",
-    "Full Stack Application",
-    "Web Development",
-    "Programming Project",
-  ];
 
   const filteredProjects =
     activeFilter === "All"
@@ -26,10 +59,13 @@ export default function Projects() {
       : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <section id="projects" className="section-pad relative">
-      <div className="container">
-        {/* PREMIUM PROJECTS SECTION HEADING */}
-        <Reveal className="mb-14 max-w-3xl relative">
+    <section id="projects" className="section-pad relative overflow-hidden">
+      {/* BACKGROUND GLOW */}
+      <div className="absolute top-20 right-0 h-80 w-80 rounded-full bg-violet-600/10 blur-[130px] pointer-events-none" />
+
+      <div className="container relative z-10">
+        {/* SECTION HEADING */}
+        <Reveal className="mb-14 max-w-3xl">
           <div className="inline-flex items-center gap-3 mb-6">
             <span className="h-px w-10 bg-gradient-to-r from-violet-500 to-sky-400" />
 
@@ -47,7 +83,7 @@ export default function Projects() {
 
             <p className="text-base md:text-lg text-gray-400 leading-8">
               A showcase of applications and development projects built through
-              hands-on experience, technical exploration and creative
+              practical experience, technical exploration and creative
               problem-solving.
             </p>
           </div>
@@ -56,15 +92,15 @@ export default function Projects() {
         </Reveal>
 
         {/* FILTER BUTTONS */}
-        <Reveal className="flex flex-wrap gap-3 mt-12 mb-10">
+        <Reveal className="flex flex-wrap gap-3 mb-12">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+              className={`rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 ${
                 activeFilter === filter
-                  ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
-                  : "border border-white/10 bg-white/5 text-gray-400 hover:text-white hover:border-violet-400/40"
+                  ? "bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-lg shadow-violet-600/25"
+                  : "border border-white/10 bg-white/[0.04] text-gray-400 hover:text-white hover:border-violet-400/40"
               }`}
             >
               {filter}
@@ -86,30 +122,42 @@ export default function Projects() {
                   duration: 0.4,
                   delay: index * 0.05,
                 }}
-                whileHover={{ y: -7 }}
-                className="group glass rounded-3xl overflow-hidden flex flex-col hover:border-violet-400/40 transition-colors duration-300"
+                whileHover={{ y: -8 }}
+                className="group glass rounded-3xl overflow-hidden flex flex-col border border-white/[0.08] hover:border-violet-400/40 transition-all duration-300"
               >
                 {/* PROJECT PREVIEW */}
-                <div className="relative h-52 overflow-hidden bg-gradient-to-br from-violet-950 via-[#151525] to-sky-950 flex items-center justify-center">
-                  <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.45),transparent_65%)]" />
+                <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[#24104a] via-[#17172c] to-[#082c43] flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,92,246,0.35),transparent_65%)]" />
+
+                  <div className="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] bg-[size:30px_30px]" />
 
                   <div className="relative text-center transition-transform duration-500 group-hover:scale-110">
-                    <div className="w-20 h-20 mx-auto rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md flex items-center justify-center">
+                    <div className="w-20 h-20 mx-auto rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl flex items-center justify-center shadow-xl shadow-violet-950/30">
                       <Layers3 size={38} className="text-violet-300" />
                     </div>
 
-                    <p className="mt-4 text-sm font-semibold text-white/70">
+                    <p className="mt-4 text-sm font-bold text-white/80">
                       {project.title}
                     </p>
                   </div>
 
-                  <span className="absolute top-4 left-4 rounded-full border border-white/10 bg-black/30 backdrop-blur-md px-3 py-1.5 text-xs text-violet-200">
+                  {/* CATEGORY */}
+                  <span className="absolute top-4 left-4 rounded-full border border-white/15 bg-black/30 backdrop-blur-md px-3 py-1.5 text-xs font-medium text-violet-200">
                     {project.category}
                   </span>
 
+                  {/* FEATURED */}
                   {project.featured && (
-                    <span className="absolute top-4 right-4 rounded-full bg-violet-500/20 border border-violet-400/30 px-3 py-1.5 text-xs text-violet-200">
+                    <span className="absolute top-4 right-4 rounded-full bg-violet-500/20 border border-violet-400/30 px-3 py-1.5 text-xs font-semibold text-violet-200">
                       Featured
+                    </span>
+                  )}
+
+                  {/* LIVE INDICATOR */}
+                  {project.liveDemo && (
+                    <span className="absolute bottom-4 right-4 flex items-center gap-2 text-xs font-medium text-green-300">
+                      <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                      Live Project
                     </span>
                   )}
                 </div>
@@ -125,45 +173,63 @@ export default function Projects() {
                   </p>
 
                   {/* TECHNOLOGIES */}
-                  <div className="flex flex-wrap gap-2 mt-6">
-                    {project.technologies.map((technology) => (
-                      <span
-                        key={technology}
-                        className="rounded-md bg-white/5 border border-white/10 px-2.5 py-1.5 text-xs text-gray-300"
-                      >
-                        {technology}
-                      </span>
-                    ))}
+                  <div className="mt-7">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-3">
+                      Built With
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((technology) => {
+                        const tech = techIcons[technology];
+                        const TechIcon = tech?.icon;
+
+                        return (
+                          <span
+                            key={technology}
+                            className="inline-flex items-center gap-2 rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-gray-300 hover:border-violet-400/30 transition-colors"
+                          >
+                            {TechIcon ? (
+                              <TechIcon size={15} color={tech.color} />
+                            ) : (
+                              <Code2 size={14} className="text-violet-400" />
+                            )}
+
+                            {technology}
+                          </span>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   {/* PROJECT LINKS */}
                   <div className="flex flex-wrap items-center gap-3 mt-7 pt-5 border-t border-white/10">
+                    {project.liveDemo && (
+                      <a
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-violet-600 to-purple-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-violet-900/20 hover:shadow-violet-600/30 hover:-translate-y-0.5 transition-all"
+                      >
+                        Live Demo
+                        <ExternalLink size={15} />
+                      </a>
+                    )}
+
                     {project.github && (
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+                        aria-label={`View ${project.title} on GitHub`}
+                        className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 text-sm font-semibold text-gray-300 hover:text-white hover:border-violet-400/40 transition-all"
                       >
                         <FaGithub size={17} />
                         GitHub
                       </a>
                     )}
 
-                    {"liveDemo" in project && project.liveDemo && (
-                      <a
-                        href={project.liveDemo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-violet-600/15 border border-violet-400/30 px-4 py-2 text-sm font-semibold text-violet-300 hover:bg-violet-600 hover:text-white transition-all duration-300"
-                      >
-                        Live Demo
-                        <ExternalLink size={16} />
-                      </a>
-                    )}
-
                     <span className="ml-auto text-violet-400">
-                      <Code2 size={20} />
+                      <Globe size={20} />
                     </span>
                   </div>
                 </div>
@@ -172,8 +238,8 @@ export default function Projects() {
           </AnimatePresence>
         </motion.div>
 
-        {/* GITHUB PROFILE LINK */}
-        <Reveal className="flex justify-center mt-14">
+        {/* GITHUB PROFILE */}
+        <Reveal className="flex justify-center mt-16">
           <a
             href="https://github.com/Aadhil3122"
             target="_blank"
