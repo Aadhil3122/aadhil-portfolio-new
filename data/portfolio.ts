@@ -3,7 +3,7 @@ export const profile = {
   name: "Mohamed Aadhil",
   firstName: "Aadhil",
 
-  role: "Software Developer",
+  role: "Full Stack Developer",
 
   subtitle: "Building Modern Web Experiences",
 
@@ -28,7 +28,7 @@ export const profile = {
   photo: "/profile.png",
 
   summary:
-    "I am a final-year B.Tech Software Technology undergraduate at the University of Vocational Technology. I am passionate about building modern web applications and developing my skills in frontend and backend technologies.",
+    "I am a final-year B.Tech Software Technology undergraduate at the University of Vocational Technology. I am passionate about building modern, scalable web applications and developing innovative solutions using frontend and backend technologies.",
 
   interests: [
     "Web Development",
