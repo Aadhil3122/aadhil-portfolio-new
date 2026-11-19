@@ -61,9 +61,9 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mt-6 text-xl md:text-2xl font-semibold text-gray-200"
           >
-            Software Developer
+            Full Stack Developer
             <span className="text-violet-400"> | </span>
-            Web Developer
+            Software Developer
           </motion.h2>
 
           <motion.p
